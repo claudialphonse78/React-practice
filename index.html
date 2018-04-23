@@ -10,28 +10,31 @@
 <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
 </head>
 <body>
- <div id="app">
-    
- </div> 
+  <h1> Check The console 👉 </h1>
+ <div id="app"></div> 
   <script type="text/babel">
   const name='Claudia';
   const handle ='@claudia'
-    const nameElement = React.createElement(
+  function NameComponent(props){
+    return React.createElement(
       'h1',
       null,
-      name      
+      props.name,   
     );
-    const handleElement =React.createElement(
+  }
+    function HandleComponent(props){
+      return React.createElement(
       'h3',
       null,
-      handle
-    );
+      props.handle
+      );
+    }
     const wrapperElement =React.createElement(
       'div',
       {id : 'container'},
-      nameElement,
-      handleElement
-    )
+      React.createElement(NameComponent,{name:"Claudia"}),
+      React.createElement(HandleComponent,{handle:'@claudia'}) 
+    );
     console.log(wrapperElement);
     ReactDOM.render(
       wrapperElement,document.getElementById('app')
