@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TYler mcginnis bootcamp</title>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script src="https://unpkg.com/react@15/dist/react.js"></script>
+<script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+</head>
+<body>
+ <div id="app">
+    
+ </div> 
+  <script type="text/babel">
+  const name='Claudia';
+  const handle ='@claudia'
+    const nameElement = React.createElement(
+      'h1',
+      null,
+      name      
+    );
+    const handleElement =React.createElement(
+      'h3',
+      null,
+      handle
+    );
+    const wrapperElement =React.createElement(
+      'div',
+      {id : 'container'},
+      nameElement,
+      handleElement
+    )
+    console.log(wrapperElement);
+    ReactDOM.render(
+      wrapperElement,document.getElementById('app')
+    );
+  
+  
+  </script>
+</body>
+</html>
