@@ -16,28 +16,21 @@
   const name='Claudia';
   const handle ='@claudia'
   function NameComponent(props){
-    return React.createElement(
-      'h1',
-      null,
-      props.name,   
-    );
+    return <h1>{props.name}</h1>
   }
     function HandleComponent(props){
-      return React.createElement(
-      'h3',
-      null,
-      props.handle
-      );
+      return <h3>{props.handle}</h3>
     }
-    const wrapperElement =React.createElement(
-      'div',
-      {id : 'container'},
-      React.createElement(NameComponent,{name:"Claudia"}),
-      React.createElement(HandleComponent,{handle:'@claudia'}) 
-    );
-    console.log(wrapperElement);
+    function App(){
+      return(
+        <div id="container">
+          <NameComponent name={name}/>
+          <HandleComponent  handle={handle}/>
+        </div>
+      )
+    }
     ReactDOM.render(
-      wrapperElement,document.getElementById('app')
+      <App />,document.getElementById('app')
     );
   
   
