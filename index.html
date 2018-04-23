@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>TYler mcginnis bootcamp</title>
+  <title>Tyler mcginnis bootcamp</title>
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 <script src="https://unpkg.com/react@15/dist/react.js"></script>
 <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
@@ -12,28 +12,31 @@
 <body>
   <h1> Check The console 👉 </h1>
  <div id="app"></div> 
-  <script type="text/babel">
-  const name='Claudia';
-  const handle ='@claudia'
-  function NameComponent(props){
-    return <h1>{props.name}</h1>
-  }
-    function HandleComponent(props){
-      return <h3>{props.handle}</h3>
+  <script type="text/babel"> 
+    function FriendsList(props){
+      return(
+        <ul>
+          {
+            props.list.map(name =>(
+              <li key={name}>
+                {name}
+              </li>
+            ))
+          }
+        </ul>
+      )
     }
     function App(){
+      const friends = ['Jordan','Mckenzie','Jake'];
       return(
         <div id="container">
-          <NameComponent name={name}/>
-          <HandleComponent  handle={handle}/>
+          <FriendsList list ={friends}/>  
         </div>
       )
     }
     ReactDOM.render(
       <App />,document.getElementById('app')
-    );
-  
-  
+    );  
   </script>
 </body>
 </html>

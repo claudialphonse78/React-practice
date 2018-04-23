@@ -37,3 +37,4 @@ equivalent to `<h1 id="header">Tyler</h1>`
 `React.createElement(NameComponent,{name:"Claudia"})`
 - Instead of using all the createElement objects to create dom nodes we can use JSX ,which stands for Javascript and XML it's an amalgam of the two to give us the best of both worlds.
 - Babel helps us a lot to convert JSX into object representaional form .[Try Babel out here](babeljs.io)
+- We can use map to loop over the array.
