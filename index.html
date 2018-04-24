@@ -19,7 +19,8 @@
           {
             props.list.map(name =>(
               <li key={name}>
-                {name}
+                <span>{name}</span>
+                <button onClick ={() =>props.onRemoveFriend(name)}>Remove</button>
               </li>
             ))
           }
@@ -29,22 +30,46 @@
   class App extends React.Component{
     //class properties
     state ={
-      friends : ['Jordan','Mckenzie','Jake']
+      friends : ['Jordan','Mckenzie','Jake'],
+      input: '',
     }
     //add friend
     handleAddFriend =() =>{
+      //passing a function as we are updating the state based on the previous state
       this.setState((currentState) =>{
-        
+        return{
+          friends : currentState.friends.concat([this.state.input]),
+          input:''
+        }
       })
     }
-    handleRemoveFriend =()=>{
-
+    //update input
+    updateInput=(e)=>{
+      const value =e.target.value;
+       this.setState(() =>({
+         input :value
+       }))
     }
-    render(){
-    
+    //remove friend
+    handleRemoveFriend= (name) =>{
+      this.setState((currentState) =>{
+        return{
+          friends: currentState.friends.filter((friend) => friend !== name)
+        }        
+      })
+    }
+    render(){  
       return(
         <div>
-          <FriendsList list={this.state.friends}/>
+        <input 
+          type="text" 
+          placeholder="new friend"
+          value={this.state.input}
+          onChange={this.updateInput}/>
+          <button onClick={this.handleAddFriend} >Submit</button>
+          <FriendsList 
+          list={this.state.friends}
+          onRemoveFriend={this.handleRemoveFriend}/>
         </div>
       )
     }
