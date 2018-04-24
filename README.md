@@ -1,5 +1,5 @@
 >## Crash Course into Redux
-This is basically a react practice crash course to understand the fundamentals of react and to track my react jouney along the way with Tyler Mcginnis bootcamp and a few other tuts along the way.
+This is basically a react practice crash course to understand the fundamentals of react and to track my react journey along the way with Tyler Mcginnis bootcamp and a few other tuts along the way.
 - React is a library for building user interfaces
 - React basically gives us details into
     - Composition

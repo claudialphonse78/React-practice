@@ -21,9 +21,25 @@
               <li key={name}>
                 <span>{name}</span>
                 <button onClick ={() =>props.onRemoveFriend(name)}>Remove</button>
+                <button onClick={() => props.onDeactivateFriend(name)}>Deactivate</button>
               </li>
             ))
           }
+        </ul>
+      )
+    }
+    function InactiveFriends(props){
+      return(
+        <ul>
+          <h1>Inactive friends</h1>
+        {
+          props.list.map(name =>(
+            <li key={name}>
+              <span>{name}</span>
+              <button>Activate</button>
+            </li>
+          ))
+        }
         </ul>
       )
     }
@@ -32,6 +48,7 @@
     state ={
       friends : ['Jordan','Mckenzie','Jake'],
       input: '',
+      inactive:[],
     }
     //add friend
     handleAddFriend =() =>{
@@ -58,6 +75,20 @@
         }        
       })
     }
+    //deativatefriend
+    deactivateFriend=(name) =>{
+      this.setState((currentState) =>{
+        return{
+          inactive: currentState.friends.filter((friend) =>friend === name)
+        }
+      })
+    }
+    //clear All 
+    clearAll =() =>{
+      this.setState({
+        friends:[]
+      })
+    }
     render(){  
       return(
         <div>
@@ -67,9 +98,13 @@
           value={this.state.input}
           onChange={this.updateInput}/>
           <button onClick={this.handleAddFriend} >Submit</button>
+          <button onClick={this.clearAll}>Clear All</button>
           <FriendsList 
           list={this.state.friends}
-          onRemoveFriend={this.handleRemoveFriend}/>
+          onRemoveFriend={this.handleRemoveFriend}
+          onDeactivateFriend={this.deactivateFriend} />
+          <InactiveFriends 
+          list={this.state.inactive} />
         </div>
       )
     }
