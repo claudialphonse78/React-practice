@@ -38,3 +38,8 @@ equivalent to `<h1 id="header">Tyler</h1>`
 - Instead of using all the createElement objects to create dom nodes we can use JSX ,which stands for Javascript and XML it's an amalgam of the two to give us the best of both worlds.
 - Babel helps us a lot to convert JSX into object representaional form .[Try Babel out here](babeljs.io)
 - We can use map to loop over the array.
+- To use state to manage our data use class component rather than functional component.
+    - This is the reason class components are called stateful components and functional components are stateless & are best for endering ui.
+
+- I am using class properties to define my `state` in my class instead of defining it in a constructor.Class properties are in stage3 proposal for Js , but if we are using babel which we are it transpiles it accordingly
+[To know more Read Dave Ceddia's amazing article](https://daveceddia.com/where-initialize-state-react/)
