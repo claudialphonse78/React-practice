@@ -92,3 +92,4 @@ equivalent to `<h1 id="header">Tyler</h1>`
 
 #### Making Ajax Requests
 - The lifecycle hook inside which we make ajax requests is `componentDidMount()`
+- We have also created a loading functionality tat will display til our ajax call is completed

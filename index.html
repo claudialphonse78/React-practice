@@ -38,6 +38,37 @@
   </script>
 
   <script type="text/babel"> 
+    class Loading extends React.Component{
+      //initial state
+      state={
+        text: 'Loading',
+      }
+      render(){
+        return(
+          <p>{this.state.text} </p>
+        )
+      }
+      //componentdidmount
+      componentDidMount(){
+        const stopper =this.state.text +'...'
+
+        this.interval= window.setInterval(() =>{
+          console.log('RUNNING');
+          //ternary operator
+          this.state.text === stopper ? this.setState({text : 'Loading'})
+          :this.setState((currentState) =>{
+            return{
+              text : currentState.text +'.'
+            }
+          })
+        },300)
+      }
+      //here we are using componentwillunmoiunt to stop the component for running for 300sec
+      componentWillUnmount(){
+          window.clearInterval(this.interval);
+      }
+    }
+
   function ActiveFriends(props){
     return(
       <div>
@@ -80,7 +111,8 @@
     //class properties
     state ={
       friends : [],
-      input: '',      
+      input: '',   
+      loading:true,   //used to check if component loaded if yes then render the component
     }
     //constructor
     constructor(props){
@@ -95,7 +127,8 @@
       .then((friends) => {
         console.log('FRIENDS',friends);
         this.setState({
-          friends
+          friends,
+          loading:false
         })
       }) ;
     }
@@ -157,6 +190,9 @@
     }
     render(){  
       console.log('--render--');
+      if(this.state.loading === true){
+        return <Loading />
+      }
       return(
         <div>
         <input 
