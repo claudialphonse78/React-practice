@@ -89,3 +89,6 @@ equivalent to `<h1 id="header">Tyler</h1>`
 - componentdidmount is called whenever component is mounted onto the DOM, so the order would be **constructor, render, componentdidmount**
 - ComponentWillMount is getting deprecated so use mostly ComponentDidMount
 ![](images/02_00.png)
+
+#### Making Ajax Requests
+- The lifecycle hook inside which we make ajax requests is `componentDidMount()`

@@ -12,6 +12,31 @@
 <body>
   <h1> Check The console 👉 </h1>
 <div id="app"></div> 
+  <script>
+    //to fake the asynchrounous nature of an ajax requests
+    window.API = {
+      fetchFriends(){
+        return new Promise((res,rej) =>{
+        const friends =[
+          {
+            name: 'Jordan',
+            active :true
+          },
+          {
+            name: 'Mckenzie',
+            active :true
+          },
+          {
+            name: 'Jake',
+            active :false
+          }
+        ]
+        setTimeout(() =>res(friends),2000)
+      })
+     }
+  }
+  </script>
+
   <script type="text/babel"> 
   function ActiveFriends(props){
     return(
@@ -54,19 +79,7 @@
   class App extends React.Component{
     //class properties
     state ={
-      friends : [
-        {
-         name: 'Jordan',
-         active :true
-        },
-        {
-         name: 'Mckenzie',
-         active :true
-        },
-        {
-         name: 'Jake',
-         active :false
-        }],
+      friends : [],
       input: '',      
     }
     //constructor
@@ -76,7 +89,15 @@
     }
     //componentdidmount
     componentDidMount(){
-      console.log('--ComponentdidMount--');      
+      console.log('--ComponentdidMount--');    
+      //invoking our fake api
+      API.fetchFriends()
+      .then((friends) => {
+        console.log('FRIENDS',friends);
+        this.setState({
+          friends
+        })
+      }) ;
     }
     //componentdidupdate
     componentDidUpdate(){
