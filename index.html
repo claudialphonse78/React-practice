@@ -11,7 +11,7 @@
 </head>
 <body>
   <h1> Check The console 👉 </h1>
- <div id="app"></div> 
+<div id="app"></div> 
   <script type="text/babel"> 
   function ActiveFriends(props){
     return(
@@ -69,6 +69,23 @@
         }],
       input: '',      
     }
+    //constructor
+    constructor(props){
+      super(props);
+      console.log('--Constructor--');
+    }
+    //componentdidmount
+    componentDidMount(){
+      console.log('--ComponentdidMount--');      
+    }
+    //componentdidupdate
+    componentDidUpdate(){
+      console.log('--ComponentDidUpdate--');
+    }
+    //componentwillunmount
+    componentWillUnmount(){
+      console.log('--ComponentWillUnmount--');
+    }
     //add friend
     handleAddFriend =() =>{
       //passing a function as we are updating the state based on the previous state
@@ -118,6 +135,7 @@
       })
     }
     render(){  
+      console.log('--render--');
       return(
         <div>
         <input 

@@ -84,3 +84,8 @@ equivalent to `<h1 id="header">Tyler</h1>`
   ```
   - **If we are updating the local state of our component based on the previous state we need to use functional setState**
 
+#### Component Lifecycle
+
+- componentdidmount is called whenever component is mounted onto the DOM, so the order would be **constructor, render, componentdidmount**
+- ComponentWillMount is getting deprecated so use mostly ComponentDidMount
+![](images/02_00.png)
