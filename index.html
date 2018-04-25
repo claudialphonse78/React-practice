@@ -13,49 +13,71 @@
   <h1> Check The console 👉 </h1>
  <div id="app"></div> 
   <script type="text/babel"> 
-    function FriendsList(props){
-      return(
+  function ActiveFriends(props){
+    return(
+      <div>
+        <h2>Active Friends</h2>
         <ul>
           {
-            props.list.map(name =>(
-              <li key={name}>
-                <span>{name}</span>
-                <button onClick ={() =>props.onRemoveFriend(name)}>Remove</button>
-                <button onClick={() => props.onDeactivateFriend(name)}>Deactivate</button>
+            props.list.map(friend =>(
+              <li key={friend.name}>
+                <span>{friend.name}</span>
+                <button onClick ={() =>props.onRemoveFriend(friend.name)}>Remove</button>
+                <button onClick={ ()=> props.onToggleFriend(friend.name)} >Deactivate</button>
               </li>
             ))
           }
         </ul>
-      )
-    }
-    function InactiveFriends(props){
+      </div>
+    )
+  }
+  function InactiveFriends(props){
       return(
-        <ul>
-          <h1>Inactive friends</h1>
-        {
-          props.list.map(name =>(
-            <li key={name}>
-              <span>{name}</span>
-              <button>Activate</button>
-            </li>
-          ))
-        }
-        </ul>
+        <div>
+          <h2>Inactive friends</h2>
+          <ul>
+            {
+              props.list.map(friend =>(
+                <li key={friend.name} >
+                  <span>{friend.name}</span>
+                  <button onClick={()=>props.onToggleFriend(friend.name)}>Activate</button>
+                </li>
+              ))
+            }
+          
+          </ul>
+        </div>
+        
       )
     }
+    
   class App extends React.Component{
     //class properties
     state ={
-      friends : ['Jordan','Mckenzie','Jake'],
-      input: '',
-      inactive:[],
+      friends : [
+        {
+         name: 'Jordan',
+         active :true
+        },
+        {
+         name: 'Mckenzie',
+         active :true
+        },
+        {
+         name: 'Jake',
+         active :false
+        }],
+      input: '',      
     }
     //add friend
     handleAddFriend =() =>{
       //passing a function as we are updating the state based on the previous state
       this.setState((currentState) =>{
         return{
-          friends : currentState.friends.concat([this.state.input]),
+          friends : currentState.friends.concat([{
+            name : currentState.input,
+            active :true,
+          }]),
           input:''
         }
       })
@@ -69,24 +91,30 @@
     }
     //remove friend
     handleRemoveFriend= (name) =>{
-      this.setState((currentState) =>{
-        return{
-          friends: currentState.friends.filter((friend) => friend !== name)
-        }        
-      })
+      this.setState((currentState) => {
+          return {
+            friends: currentState.friends.filter((friend) => friend.name !== name)
+          }
+        })
     }
-    //deativatefriend
-    deactivateFriend=(name) =>{
+    
+    //toggle between active and inactive friends
+    handleToggleFriend = (name) =>{
       this.setState((currentState) =>{
-        return{
-          inactive: currentState.friends.filter((friend) =>friend === name)
+        const friend =currentState.friends.find((friend) =>friend.name === name)
+        return {
+          friends : currentState.friends.filter((friend) =>friend.name !== name).concat([{
+            name,
+            active: !friend.active,
+          }])        
         }
       })
     }
+
     //clear All 
     clearAll =() =>{
       this.setState({
-        friends:[]
+        friends:[],
       })
     }
     render(){  
@@ -99,12 +127,14 @@
           onChange={this.updateInput}/>
           <button onClick={this.handleAddFriend} >Submit</button>
           <button onClick={this.clearAll}>Clear All</button>
-          <FriendsList 
-          list={this.state.friends}
-          onRemoveFriend={this.handleRemoveFriend}
-          onDeactivateFriend={this.deactivateFriend} />
-          <InactiveFriends 
-          list={this.state.inactive} />
+          <ActiveFriends 
+            onRemoveFriend={this.handleRemoveFriend}
+            list={this.state.friends.filter(friend =>friend.active === true)}
+            onToggleFriend={this.handleToggleFriend}
+          />
+          <InactiveFriends
+            list={this.state.friends.filter(friend => friend.active === false)}
+            onToggleFriend={this.handleToggleFriend}/>
         </div>
       )
     }
