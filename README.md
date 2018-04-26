@@ -2,8 +2,10 @@
 This is basically a react practice crash course to understand the fundamentals of react and to track my react journey along the way with Tyler Mcginnis bootcamp and a few other tuts along the way.
 
   # [Demo link for assignment -1](https://claudz1.github.io/React-practice/)
-
+  ![](./images/04_00.png)
   # [Demo link for assignment -2](https://claudz1.github.io/React-practice/assignment-1/index.html)
+  ![](./images/03_00.png)
+
 
 - React is a library for building user interfaces
 - React basically gives us details into
@@ -99,4 +101,3 @@ equivalent to `<h1 id="header">Tyler</h1>`
 - The lifecycle hook inside which we make ajax requests is `componentDidMount()`
 - We have also created a loading functionality that will display till our ajax call is completed
 
-![](./images/03_00.png)
