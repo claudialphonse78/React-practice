@@ -8,6 +8,7 @@
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
   <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <h1> Check The console 👉 </h1>
@@ -73,13 +74,15 @@
     return(
       <div>
         <h2>Active Friends</h2>
-        <ul>
+        <ul className='active__ul'>
           {
             props.list.map(friend =>(
-              <li key={friend.name}>
-                <span>{friend.name}</span>
-                <button onClick ={() =>props.onRemoveFriend(friend.name)}>Remove</button>
-                <button onClick={ ()=> props.onToggleFriend(friend.name)} >Deactivate</button>
+              <li className='active__li' key={friend.name}>
+                <span className='active__name'>{friend.name}</span>
+                <span className='active__button'>  
+                  <button className='remove__friend' onClick ={() =>props.onRemoveFriend(friend.name)}>Remove</button>
+                  <button className='deactivate__friend' onClick={ ()=> props.onToggleFriend(friend.name)} >Deactivate</button>
+                </span>               
               </li>
             ))
           }
@@ -94,9 +97,10 @@
           <ul>
             {
               props.list.map(friend =>(
-                <li key={friend.name} >
+                <li className='deac__li' key={friend.name} >
                   <span>{friend.name}</span>
-                  <button onClick={()=>props.onToggleFriend(friend.name)}>Activate</button>
+                  <button className='activate__friend'onClick={()=>props.onToggleFriend(friend.name)}>Activate</button>
+                
                 </li>
               ))
             }
@@ -196,12 +200,13 @@
       return(
         <div>
         <input 
+          className='input__field'
           type="text" 
           placeholder="new friend"
           value={this.state.input}
           onChange={this.updateInput}/>
-          <button onClick={this.handleAddFriend} >Submit</button>
-          <button onClick={this.clearAll}>Clear All</button>
+          <button className='submit__friend' onClick={this.handleAddFriend} >Submit</button>
+          <button className='remove__friend'onClick={this.clearAll}>Clear All</button>
           <ActiveFriends 
             onRemoveFriend={this.handleRemoveFriend}
             list={this.state.friends.filter(friend =>friend.active === true)}
