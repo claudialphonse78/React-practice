@@ -1,0 +1,41 @@
+
+.body,html{
+  margin:0;
+  padding:0;
+  background-color: #EEEEEE;
+  box-sizing: border-box;
+  transition:all ease-in .5s;
+}
+
+.nav__li{
+  display : flex;
+  flex-wrap :wrap ;
+  list-style: none;
+  justify-content: space-evenly;
+  color: #DF4344;
+  text-align: center;
+  font-weight: 700;
+  font-size: 2em;
+}
+
+.nav__li>li:hover{
+  color: #F4BCBE;
+}
+a{
+  color:#EEEEEE;
+}
+.repo__li{
+  list-style: none;
+  box-shadow: 0 8px 6px -6px black; 
+  
+  background-color: #DF4344;
+}
+.repo__li>li{
+  padding: 10px;
+}
+.active__lang{
+  padding: 5px;
+  background:#4285f4;
+  border-radius:5px;
+  box-shadow:0px 17px 10px -10px rgba(0,0,0,0.4);
+}

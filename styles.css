@@ -1,0 +1,73 @@
+.body,html{
+  margin:0;
+  padding:0;
+  background-color: #EEEEEE;
+  box-sizing: border-box;
+  transition: all cubic-bezier(.55,-0.04,.91,.94) 06s;
+  text-align: center;
+  font-size: 1em;
+}
+#app{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border-radius: 5px;
+  background-color: tomato;
+  padding: 10px;
+  box-shadow: 0 8px 6px -6px black; 
+}
+.input__field{
+  border: 5px solid #1D1423; 
+  margin-right: 5px;
+  padding: 14px 28px;
+  font-size: 1em;
+}
+button{
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  padding: 14px 28px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-left: 5px;
+}
+.remove__friend:hover{
+  background-color: red;
+}
+.activate__friend:hover{
+  background-color: springgreen;
+}
+.deactivate__friend:hover{
+  background-color: salmon;
+}
+.submit__friend:hover{
+  background-color: springgreen;
+}
+li{
+  padding: 10px;
+  list-style: none;
+  color: #EEEEEE;
+  font-size: 1em;
+  font-weight: 700;
+}
+.active__li,.deac__li{
+  display : flex;
+  flex: 1 1 auto;
+  flex-direction: column;  
+  align-items: center;
+  margin: 1px 0 1px 0;
+}
+.active__li span{
+  flex: 0 0 30%;
+}
+.deac__li span{
+  flex: 0 0 40%;
+}
+.active__name{
+  margin-right: 10px;
+  padding: 2px;
+}
+.active__button{
+  margin-left: 40px;
+  padding: 5px;
+}
